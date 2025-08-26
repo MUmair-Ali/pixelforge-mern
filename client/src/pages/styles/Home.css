@@ -1,0 +1,233 @@
+.hero-section {
+    background-color: var(--dark-background-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative; 
+    overflow: hidden;
+    justify-content: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 1.5rem 3rem;
+  
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-image: linear-gradient(
+    90deg,var(--primary-color3) 0, transparent 1px),
+  linear-gradient(var(--primary-color3) 0,transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+
+.hero-buttons {
+    display: flex;
+    gap: 1.6rem;
+
+}
+
+.hero-image .banner-image,
+.hero-image .lottie-animation {
+  aspect-ratio: 1 / 1;
+    width: clamp(24rem, 45vw, 50rem);
+    height: auto; 
+    max-width: 100%;
+    position: relative;
+    display: inline-block;
+    transform: translateX(6rem);
+    z-index: 1 !important;
+   
+}
+
+
+.analytics-section {
+  min-height: calc(80vh - 25rem);
+  padding: 4rem 0;
+  background-color: var(--section-background-color);
+}
+
+.analytics-section .container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 9rem 0;
+  background-color: var(--section-background-color);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.analytics-card {
+  background: linear-gradient(var(--section-background-color), var(--dark-background-color))
+      padding-box,
+      var(--primary-gradient) border-box;
+  border: 2px solid transparent;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.analytics-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.analytics-card .card-title {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.analytics-card .card-value {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'Silkscreen', cursive !important;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.analytics-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.analytics-card:hover::after {
+  opacity: 0.05;
+}
+
+.gs-section {
+  background-color: var(--dark-background-color);
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+.gs-image {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gs-image img {
+  width: 100%;
+  height: auto;
+  max-width: 32rem; /* prevents over-scaling */
+  object-fit: cover;
+  display: block;
+}
+/* ========== MEDIA QUERIES FOR RESPONSIVENESS ========== */
+
+
+@media (max-width: 768px) {
+    html {
+        font-size: 60%;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .grid-two-cols,
+    .grid-four-cols {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .hero-section {
+        padding: 6rem 0;
+        min-height: auto;
+        align-items: center;
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    .hero-section .grid-two-cols {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .hero-image {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-content {
+        order: 2;
+        text-align: center;
+        max-width: 100%;
+        align-items: center;
+        padding: 0rem;
+        gap: 0.2rem;
+    }
+
+    .hero-image .banner-image,
+    .hero-image .lottie-animation {
+        transform: none;
+        margin: 0 auto;
+        display: block;
+        max-width: 90%;
+    }
+
+    .hero-subtitle,
+    .hero-description,
+    .hero-title {
+        text-align: center;
+    }
+
+    .hero-title {
+    font-size: 4.5rem;
+  }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.2rem;
+    }
+
+    /* Stack GS section content and image */
+    .gs-section .grid-two-cols {
+        flex-direction: column;
+    }
+
+    .gs-section .gs-image {
+        order: 1;
+    }
+
+    .gs-section .hero-content {
+        order: 2;
+        align-items: center;
+        text-align: center;
+    }
+}

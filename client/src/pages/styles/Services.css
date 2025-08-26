@@ -1,0 +1,62 @@
+.services-section {
+    background-color: var(--section-background-color);
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+}
+
+
+.services-heading {
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: var(--text-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+      animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.services-heading:after {
+   content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1rem;
+  height: 3px;
+  width: 40%;
+  background: var(--primary-gradient);
+  --px: 6px;
+  --gap: 2px; 
+  -webkit-mask-image: repeating-linear-gradient(
+    to right,
+    #000 0 var(--px),
+    transparent var(--px) calc(var(--px) + var(--gap))
+  );
+  mask-image: repeating-linear-gradient(
+    to right,
+    #000 0 var(--px),
+    transparent var(--px) calc(var(--px) + var(--gap))
+  );
+  transform: translateX(-50%) scaleX(1);
+  transition: transform 0.45s steps(10, end);
+}
+
+@media (max-width: 768px) {
+
+    .grid-three-cols {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .services-heading {
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,478 @@
+.admin-content {
+  margin-left: 13rem;
+  padding: 3rem 4rem;
+  min-height: 100vh;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--dark-background-color);
+}
+
+.admin-header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  position: relative;
+  letter-spacing: 0.1rem;
+  display: inline-block;
+}
+
+.admin-header h1::after {
+  content: "";
+  position: absolute;
+  left: 3.75rem;
+  bottom: -1rem;
+  height: 3px;
+  width: 5%;
+  background: var(--primary-gradient);
+
+  --px: 6px;
+  --gap: 2px;
+  -webkit-mask-image: repeating-linear-gradient(
+    to right,
+    #000 0 var(--px),
+    transparent var(--px) calc(var(--px) + var(--gap))
+  );
+  mask-image: repeating-linear-gradient(
+    to right,
+    #000 0 var(--px),
+    transparent var(--px) calc(var(--px) + var(--gap))
+  );
+
+  transform: translateX(-50%) scaleX(1);
+  transition: transform 0.45s steps(10, end);
+}
+
+.admin-header p {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.users-table-wrapper {
+  overflow-x: auto;
+  background: rgba(26, 26, 31, 0.85);
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  border-image: var(--primary-gradient) 1;
+    border-image-slice: 1;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease-out;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+ padding: 1.2rem 1rem;
+  font-size: 1.4rem;
+  text-align: left;
+  border-bottom: 1px solid var(--btn-primary);
+  transition: background 0.25s ease;
+  max-width: 40ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;  
+  
+}
+
+.users-table th {
+  background: var(--dark-background-color);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+}
+
+.users-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.edit-input, .edit-select {
+    width: 100%;
+    background-color: #2a2a32;
+    font-family: inherit;
+    color: var(--text-primary);
+    border: 1px solid var(--text-secondary);
+    padding: 1.2rem 1.5rem;
+    font-size: 1.4rem;
+    outline: none;
+    display: inline-block;
+  transform-origin: center;
+    min-width: 80px;
+}
+
+.edit-input:focus, .edit-select:focus {
+    outline: none;
+    border-image: var(--primary-gradient) 1;
+    border-image-slice: 1;
+    box-shadow: 0 2px 10px rgba(205, 187, 96, 0.497);
+}
+
+/* Edit Button - Complementary to your theme with orange/amber accent */
+.btn-edit {
+  background: var(--section-background-color);
+  border: 3px solid #FEE440;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-edit span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #FEE440, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+  position: relative;
+}
+
+.btn-edit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FF8C42, #FFB347);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
+  border-color: #FFB347;
+}
+
+.btn-edit:hover::before {
+  left: 0;
+  opacity: 0.1;
+}
+
+.btn-edit:hover span {
+  background: linear-gradient(135deg, #FFB347, #FFC966);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-glow 0.4s ease-out;
+}
+
+/* Delete Button - Dangerous action with red accent but following your theme */
+.btn-delete {
+  background: var(--section-background-color);
+  border: 3px solid #E74C3C;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-delete span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #E74C3C, #FF6B6B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+  position: relative;
+}
+
+.btn-delete::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #E74C3C, #FF6B6B);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  border-color: #FF6B6B;
+}
+
+.btn-delete:hover::before {
+  left: 0;
+  opacity: 0.15;
+}
+
+.btn-delete:hover span {
+  background: linear-gradient(135deg, #FF6B6B, #FF8A8A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-glow 0.4s ease-out;
+}
+
+/* Special danger state for delete button */
+.btn-delete:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.6);
+}
+
+
+.btn-update {
+  background: var(--section-background-color);
+  border: 3px solid var(--primary-color1);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-update span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: var(--primary-color1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+  position: relative;
+}
+
+.btn-update::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color1);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.btn-update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(201, 66, 255, 0.4);
+  border-color: var(--primary-color1);
+}
+
+.btn-update:hover::before {
+  left: 0;
+  opacity: 0.1;
+}
+
+.btn-update:hover span {
+  background: var(--primary-color1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-glow 0.4s ease-out;
+}
+
+
+.btn-cancel {
+  background: var(--section-background-color);
+  border: 3px solid var(--primary-color2);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cancel span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: var(--primary-color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+  position: relative;
+}
+
+.btn-cancel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color2);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  border-color: var(--primary-color2);
+}
+
+.btn-cancel:hover::before {
+  left: 0;
+  opacity: 0.15;
+}
+
+.btn-cancel:hover span {
+  background: var(--primary-color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-glow 0.4s ease-out;
+}
+
+.btn-cancel:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.6);
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-group .btn {
+  margin-top: 0;
+}
+
+.dash-card {
+    background: linear-gradient(var(--section-background-color), var(--dark-background-color))
+      padding-box,
+      var(--primary-gradient) border-box;
+  border: 2px solid transparent;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dash-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.dash-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.dash-card:hover::after {
+  opacity: 0.05;
+}
+
+.dash-card .dash-title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.dash-card .dash-value {
+  font-size: 3.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Silkscreen', cursive !important;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .admin-content {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .admin-content.blur-active {
+    filter: blur(4px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.admin-content.blur-active {
+        z-index: 50;
+    }
+
+  .admin-header {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .admin-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .admin-header h1::after {
+    display: none;
+  }
+
+  .admin-header p {
+    font-size: 1.2rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 0.8rem 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .edit-input,
+  .edit-select {
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group .btn {
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .btn-edit span,
+  .btn-delete span,
+  .btn-update span,
+  .btn-cancel span {
+    font-size: 1.2rem;
+  }
+
+  .dash-card .dash-title {
+    font-size: 1.5rem;
+  }
+
+  .dash-card .dash-value {
+    font-size: 3rem;
+  }
+
+  .grid-three-cols {
+    grid-template-columns: 1fr;
+  }
+}
